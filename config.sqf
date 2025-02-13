@@ -20,7 +20,7 @@
  * CHANGES & FIXES:
  * ----------------
  * - Ensured all variables use consistent naming conventions across files.
- * - Fixed `BH_count_HeliCrash` inconsistency (now `BH_count_HeliCrash` everywhere).
+ * - Fixed `BH_count_helicrash` inconsistency (now `BH_count_HeliCrash` everywhere).
  * - Added missing `_wreckCount` definition to prevent undefined variable errors.
  * - Adjusted loot balance for better underwater and heli wreck missions.
  * - Ensured diving gear does not spawn in heli wreck crates.
