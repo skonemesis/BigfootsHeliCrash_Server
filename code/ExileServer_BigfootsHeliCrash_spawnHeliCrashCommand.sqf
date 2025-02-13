@@ -1,3 +1,54 @@
+/*
+ * ExileServer_BigfootsHeliCrash_spawnHeliCrashCommand.sqf
+ * 
+ * Spawns helicopter wrecks in random locations based on configuration settings.
+ * Fixes undefined `_wreckCount` and aligns variable names.
+ *
+ * Updated by: SKO & Ghost PGM DEV TEAM
+ */
+
+private ["_wreckagePosition", "_wreck", "_wreckType", "_crate", "_crateType", "_cratePosition"];
+
+// Log function start
+["Starting Heli Crash Spawn Process..."] call ExileServer_BigfootsHeliCrash_util_logCommand;
+
+// Ensure the wreck count variable is defined correctly
+private _wreckCount = BH_count_HeliCrash; // Standardized variable name
+
+// Validate wreck count before proceeding
+if (isNil "_wreckCount" || { _wreckCount <= 0 }) exitWith 
+{
+    ["ERROR: Invalid wreck count! Check `BH_count_HeliCrash` in config.sqf"] call ExileServer_BigfootsHeliCrash_util_logCommand;
+};
+
+// Loop to spawn wrecks
+for "_i" from 1 to _wreckCount do
+{
+    _wreckagePosition = [BH_locations_center, BH_locations_distance_min, BH_locations_distance_max, 0, 0, 10, 0] call BIS_fnc_findSafePos;
+    
+    // Validate spawn position
+    if (count _wreckagePosition == 0) then 
+    {
+        ["WARNING: Could not find a safe position for wreck spawn!"] call ExileServer_BigfootsHeliCrash_util_logCommand;
+        continue;
+    };
+
+    _wreckType = selectRandom BH_class_wreckage;
+    _wreck = createVehicle [_wreckType, _wreckagePosition, [], 0, "NONE"];
+    _wreck setVectorUp surfaceNormal _wreckagePosition;
+
+    ["Spawned wreck: " + str _wreckType + " at " + str _wreckagePosition] call ExileServer_BigfootsHeliCrash_util_logCommand;
+
+    _crateType = selectRandom BH_class_crate;
+    _cratePosition = _wreckagePosition getPos [BH_locations_crateWreckOffset, random 360];
+    _crate = createVehicle [_crateType, _cratePosition, [], 0, "CAN_COLLIDE"];
+
+    ["Spawned crate: " + str _crateType + " at " + str _cratePosition] call ExileServer_BigfootsHeliCrash_util_logCommand;
+};
+
+["Finished spawning Heli Crashes."] call ExileServer_BigfootsHeliCrash_util_logCommand;
+
+/*
 if (!isServer) exitWith {};
 
 private["_crate", "_crateCargo", "_crateClass", "_crateCountPoptabsSeed", "_cratePosition", "_isDebugFillLogEnabled", "_marker", "_minDistance", "_maxDistance", "_positioning", "_spawnCenter", "_wreckage", "_wreckageClass", "_wreckCount", "_wreckId", "_wreckagePosition"];
@@ -49,3 +100,4 @@ for "_i" from 1 to _wreckCount do
 };
 
 "Finished Heli Crash spawns." call ExileServer_BigfootsHeliCrash_util_logCommand;   
+*/
