@@ -2,18 +2,18 @@
  * ExileServer_BigfootsHeliCrash_spawnHeliCrashCommand.sqf
  * 
  * Spawns helicopter wrecks in random locations based on configuration settings.
- * Fixes undefined `_wreckCount` and aligns variable names.
+ * Ensures correct variable usage, adds markers, and correctly fills loot/money in crates.
  *
- * Updated by: SKO & Ghost PGM DEV TEAM
+ * Updated by: sko & Ghost PGM DEV TEAM
  */
 
-private ["_wreckagePosition", "_wreck", "_wreckType", "_crate", "_crateType", "_cratePosition"];
+private ["_wreckagePosition", "_wreck", "_wreckType", "_crate", "_crateType", "_cratePosition", "_wreckId"];
 
 // Log function start
 ["Starting Heli Crash Spawn Process..."] call ExileServer_BigfootsHeliCrash_util_logCommand;
 
 // Ensure the wreck count variable is defined correctly
-private _wreckCount = BH_count_HeliCrash; // Standardized variable name
+private _wreckCount = BH_count_HeliCrash;
 
 // Validate wreck count before proceeding
 if (isNil "_wreckCount" || { _wreckCount <= 0 }) exitWith 
@@ -39,11 +39,23 @@ for "_i" from 1 to _wreckCount do
 
     ["Spawned wreck: " + str _wreckType + " at " + str _wreckagePosition] call ExileServer_BigfootsHeliCrash_util_logCommand;
 
+    // Generate unique wreck ID
+    _wreckId = _i call ExileServer_BigfootsHeliCrash_getWreckIdForSpawnCountIndexQuery;
+
+    // Create a marker for the wreck
+    [_wreckId, _wreckagePosition] call ExileServer_BigfootsHeliCrash_createHeliCrashMarkerCommand;
+    
     _crateType = selectRandom BH_class_crate;
     _cratePosition = _wreckagePosition getPos [BH_locations_crateWreckOffset, random 360];
     _crate = createVehicle [_crateType, _cratePosition, [], 0, "CAN_COLLIDE"];
 
     ["Spawned crate: " + str _crateType + " at " + str _cratePosition] call ExileServer_BigfootsHeliCrash_util_logCommand;
+
+    // Fill crate with loot
+    [_wreckId, _crate, BH_loot_itemCargo, BH_debug_logCrateFill] call ExileServer_BigfootsHeliCrash_addItemsToCrateCommand;
+
+    // Add money to crate
+    [_wreckId, _crate, BH_loot_count_poptabs_seed, BH_debug_logCrateFill] call ExileServer_BigfootsHeliCrash_addMoneyToCrateCommand;
 };
 
 ["Finished spawning Heli Crashes."] call ExileServer_BigfootsHeliCrash_util_logCommand;
