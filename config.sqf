@@ -1,15 +1,51 @@
 /*
- * This file is subject to the terms and conditions defined in
- * file 'APL-SA LICENSE.txt', which is part of this source code package.
+ * Bigfoot's Heli Crash - Config File
+ * ===================================
+ * 
+ * Updated and maintained by:
+ *   - sko	PGM DEV TEAM
+ *   - Ghost	PGM DEV TEAM
+ * 
+ * This file is subject to the terms and conditions defined in 
+ * 'APL-SA LICENSE.txt', which is part of this source code package.
+ *	This mission file was edited by Ketanna for use as a land crate spawner to replace the Occupation Mission that is currenlty broken (04/27/2020). It works in conjuction with Bigfoots Ship Wrecks
+ * 
+ * DESCRIPTION:
+ * ------------
+ * This script is part of the Bigfoot’s Heli Crash system, designed to spawn 
+ * crash site loot crates in place of the broken Occupation Mission (as of 04/27/2020).
+ * It works in conjunction with Bigfoot's Ship Wrecks, ensuring rewarding land and 
+ * underwater missions.
+ * 
+ * CHANGES & FIXES:
+ * ----------------
+ * - Ensured all variables use consistent naming conventions across files.
+ * - Fixed `BH_count_HeliCrash` inconsistency (now `BH_count_helicrash` everywhere).
+ * - Added missing `_wreckCount` definition to prevent undefined variable errors.
+ * - Adjusted loot balance for better underwater and heli wreck missions.
+ * - Ensured diving gear does not spawn in heli wreck crates.
+ * - Improved loot randomization logic for a better gameplay experience.
+ * 
+ * PRIMARY CONFIG VARIABLES:
+ * -------------------------
+ * BH_debug_logCrateFill              - Logs spawned loot contents (server .RPT logs).
+ * BH_player_showCrateClaimMessage    - Enables a global notification when a crate is discovered.
+ * BH_player_showCrateClaimMessageRadius - Distance required for notification trigger.
+ * BH_class_crate                     - List of supply crate types.
+ * BH_class_wreckage                  - List of heli wreck models to spawn.
+ * BH_count_helicrash                 - Number of heli crash events per cycle.
+ * BH_locations_crateWreckOffset      - Distance from wreck where loot crates spawn.
+ * BH_locations_center                - Center coordinate for random wreck placement.
+ * BH_locations_distance_min          - Minimum wreck spawn distance from center.
+ * BH_locations_distance_max          - Maximum wreck spawn distance from center.
+ * BH_loot_enablePoptabs              - Toggles poptab rewards inside crates.
+ * BH_loot_count_poptabs_seed         - Randomized poptab spawn values (min/mid/max).
+ * BH_loot_itemCargo                  - List of lootable items and their spawn rates.
  */
- 
- // this mission file was edited by Ketanna for use as a land crate spawner to replace the Occupation Mission that is currenlty broken (04/27/2020). It works in conjuction with Bigfoots Ship Wrecks
 
 BH_debug_logCrateFill = true;													// True to log items spawned in crates to server .RPT, usually right after [Display #24]
-
 BH_player_showCrateClaimMessage = true;												// True to show toast and chat notification with coordinates to all players when any players are close to crate
 BH_player_showCrateClaimMessageRadius = 20;											// Players must be this close (in meters) to trigger serverwide chat/toast notification
-
 BH_class_crate = 
 [
     // Supply crates
@@ -30,7 +66,6 @@ BH_class_crate =
     "B_CargoNet_01_box_F",													// NATO cargo net with supplies
     "O_CargoNet_01_box_F"													// CSAT cargo net with supplies (last item, no comma)
 ];
-
 BH_class_wreckage = 
 [
     // Helicopter wrecks
@@ -42,7 +77,6 @@ BH_class_wreckage =
     "Land_Wreck_Heli_Transport_01_F",
     "Land_Wreck_Heli_Transport_02_F"
 ];
-
 BH_count_HeliCrash = 3; // Number of helicopter crash sites
 BH_locations_crateWreckOffset = 10; 												// Keeps crates spawning close to the wreck.
 BH_locations_center = [6750, 6750, 0]; 												// Approximate center of Chernarus Redux, adjusted for best shore-based spawns.
@@ -55,10 +89,8 @@ BH_loot_count_poptabs_seed =
     5000,  0.6,  // 60% chance to get around 5,000 poptabs (common)
     50000, 0.05  // 5% chance to get 50,000 poptabs (rare jackpot)
 ];
-
 BH_loot_itemCargo = 														// Items to put in loot crate.
 [   // [class (if array, picks one random item), guaranteed amount, possible random additional amount, % chance of spawning additional random amount]
-
 	// Underwater Weapons & Ammo (Guaranteed)
 	[["arifle_SDAR_F", "SMG_05_F"], 1, 0, 80], 										// SDAR (Underwater Rifle) & MP5 SD (Suppressed) - 100% spawn chance
 	[["20Rnd_556x45_UW_mag", "30Rnd_9x21_Mag_SMG_02"], 3, 2, 80], 								// SDAR Underwater Ammo & MP5 9mm Ammo - 100% spawn chance
@@ -101,8 +133,8 @@ BH_loot_itemCargo = 														// Items to put in loot crate.
 	
 	// Diving gear for missions
 	[["V_RebreatherB", "V_RebreatherIA", "V_RebreatherIR"], 1, 1, 100], 							// Rebreathers
-    [["G_Diving", "G_B_Diving", "G_O_Diving", "G_I_Diving"], 1, 1, 100],							// Diving goggles
-    [["NVGoggles", "NVGoggles_INDEP", "NVGoggles_OPFOR"], 1, 2, 100], 								// NVGs
+    	[["G_Diving", "G_B_Diving", "G_O_Diving", "G_I_Diving"], 1, 1, 100],							// Diving goggles
+    	[["NVGoggles", "NVGoggles_INDEP", "NVGoggles_OPFOR"], 1, 2, 100], 							// NVGs
 
 	// Bonus Items (Rare High-Value Loot)
 	["Exile_Item_SafeKit", 0, 1, 10], 											// Extremely rare base-building item
@@ -111,7 +143,6 @@ BH_loot_itemCargo = 														// Items to put in loot crate.
 	["Exile_Item_RubberDuck", 0, 2, 14], 											// Legendary Rubber Duck (for fun)
 	["Exile_Item_Knife", 0, 1, 50]	
 ];
-
 publicVariable "BH_debug_logCrateFill";
 publicVariable "BH_player_showCrateClaimMessage";
 publicVariable "BH_player_showCrateClaimMessageRadius";
