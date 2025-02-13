@@ -1,73 +1,102 @@
-Changelog:
+# **Bigfoot's Heli Crash - Updated by SKO & Ghost PGM DEV TEAM**
 
-8/5/2016 v1.0.0 - initial release
+### **Changelog:**
 
-#######
+- **8/5/2016 - v1.0.0** - Initial release  
+- **2/13/2025 - v1.1.0** - Code refactor, variable consistency, and improved structure.  
 
-Author:
+---
 
-Bigfoot
+### **Author:**
 
+- **Original:** Bigfoot  
+- **Modifications & Enhancements:** Ketanna  
+- **Latest Update & Maintenance:** sko & Ghost PGM DEV TEAM  
 
-This Mission file was edited by Ketanna to allow land crates to be spawned as heli crashes. The mission file can be used in conjuncion with the original BigFoot Ship Wrecks
-The seperation of the mission from BigFoots Ship Wrecks as to allow for a more controlled crate spawning.
+This mission file was originally edited by **Ketanna** to allow land crates to be spawned as heli crashes. The mission file can be used in conjunction with the original **Bigfoot’s Ship Wrecks**. The separation of heli crashes from Bigfoot’s Ship Wrecks allows for better control over crate spawning mechanics.
 
+---
 
-#######
+### **Credits:**
 
-Credits:
+- **Original Contributors:** Darth_Rogue, Chisel, deadeye, and Robio.  
+- **Based on modifications by:** Tuna.  
+- **Special Thanks:**  
+  - TaylorSwift for very helpful mod template.  
+  - Second_Coming for the Occupation mod, from which many techniques were learned.  
 
-* Earliest known script variation: Darth_Rogue, Chisel, deadeye, and Robio.
-* Based on modified script by Tuna.
-* TaylorSwift for very helpful mod template.
-* Second_Coming for Occupation mod from which I learned techniques.
+---
 
-#######
+### **Summary:**
 
-Summary:
+This addon spawns **Heli Crash** wrecks with **loot crates** and **markers** in random locations on the server restart.  
 
+**No AI spawn at crates (yet),** but you can integrate AI patrols manually if desired.  
+**Inventory cannot be accessed while crates are underwater** due to Arma mechanics.  
+**Use R3F, Igiload, or Exile's built-in crate mounting system** to transport crates via SDVs to shore.  
 
+**Encouraged Community Contributions:**  
+This addon is open for modifications! If you improve or extend it, please share your edits on **[ExileMod Forums](http://www.exilemod.com/)** so others can benefit.
 
-This addon spawns HeliCrash with loot crates and markers in random water locations on server restart. It does NOT spawn AI at the crates (yet), but you are welcome to add AI.
+**Most settings can be configured in `config.sqf`.**  
 
-Inventory can NOT be taken from crates while the crate is underwater, due to Arma mechanics. Use R3F, Igiload, or built-in Exile crate mounting to load crates onto SDVs to be transported to shore.
+---
 
-Feel free to extend this however you like. I encourage you to post your edits on http://www.exilemod.com/ so others can enjoy your improvements and contribute with further enhancements.
+### **Features:**
 
-Most settings can be configured to your preference in config.sqf.
+**Configurable crate loot:**  
+- Loot spawn percentages  
+- Guaranteed items  
+- Randomized item amounts  
+- Random poptab amounts  
+- Random classname selection  
 
-########
+**Configurable wreck spawning:**  
+- Spawn up to a defined number of Heli Crash sites  
+- Customize spawn locations (center point & distance)  
 
-Features:
+**Dynamic marker system:**  
+- Displays marker at each heli crash site  
+- Players near the wreck remove the marker  
+- Exile Toast & chat message announces the find (can be toggled on/off)  
 
-* Configurable crate loot, with loot spawn percentages, guaranteed items, additional random items, random poptab count, and random classname selection for loot items.
-* Spawns up to a certain configurable number of HeliCrash in the ocean, at a configurable distance from a configurable center point.
-* Displays marker on shipwreck.
-* Players within a configurable distance of the shipwreck will cause the marker to disappear and an Exile Toast as well as chat message to be displayed to all players with the shipwreck's/player's coordinates. This can be turned on or off.
+---
 
-########
+### **Roadmap:**
 
-Roadmap:
-* Add optional AI spawns around crates.
-* Allow HeliCrash to cluster in certain areas - e.g 1/3 of ships would spawn in Altis central bay, and 1/3 of HeliCrash would spawn in deep water surrounding altis.
-* Increased chance for certain loot
+**Planned Enhancements:**  
+Add optional **AI spawns** around crash sites
+Allow **Heli Crash clustering** in certain areas (e.g., central bay vs. deep waters)  
+Increase spawn chance for **specific loot**  
 
-########
+---
 
-License:
+### **License:**
 
-This work is license under the Arma Public License Share Alike (APL-SA). Full license text can be found in the LICENSE.txt file in this package.
+**Arma Public License Share Alike (APL-SA)**  
+- Full license text can be found in the `LICENSE.txt` file in this package.  
+- **You cannot charge money for this addon.**  
+- **Modifications must be distributed with APL-SA** to ensure the Exile Mod community benefits from shared improvements.  
 
-Essentially, you must not charge for, or to use, this addon. If you make modifications to this addon, it can only be distributed with APL-SA. This is so others in the Exile Mod community can benefit from collaborative efforts.
+---
 
-########
+### **Installation:**
 
-Installation:
+**Step 1:** Drop the `BigfootsHeliCrash_Server.pbo` file in your server’s `@ExileServer/addons/` folder.  
+**Step 2:** Restart the server to apply changes.  
 
-Drop the BigfootsHeliCrash_Server.pbo file in your @ExileServer/addons/ folder.
+---
 
-########
+### **Configuration:**
 
-Configuration:
+**Modify `config.sqf` to customize settings:**  
+- Wreck & crate spawn rules  
+- Loot configurations  
+- Marker behaviors  
+- Notification settings  
 
-Edit values in config.sqf to your liking.
+---
+
+This updated README is now clear, structured, and includes all necessary details for installation, configuration, and future improvements.  
+
+Would you like me to push this update directly to your GitHub? 🚀
