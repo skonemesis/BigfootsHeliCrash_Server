@@ -6,7 +6,8 @@ _countWrecks = _this select 0;
 _crateClaimMessageRadius = _this select 1;
 _showCrateClaimMessage = _this select 2;
 
-for "_i" from 1 to _countWrecks do
+// (testing below) for "_i" from 1 to _countWrecks do
+for "_i" from 1 to BH_count_HeliCrash do
 {
 	_markerId = _i call ExileServer_BigfootsHeliCrash_getWreckIdForSpawnCountIndexQuery;
 	_markerPosition = getMarkerPos _markerId;
