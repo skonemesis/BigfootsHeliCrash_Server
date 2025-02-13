@@ -20,4 +20,4 @@ _marker = createMarker [_markerId, _markerPosition];
 _marker setMarkerShape "ICON";
 _marker setMarkerType "c_air";        // Type of marker (e.g., air)
 _marker setMarkerColor "ColorGreen";  // Marker color (could also be "ColorOrange", "ColorRed", etc.)
-_marker setMarkerText _markerText;  	 // Set the text for the marker
+_marker setMarkerText _markerText;  	// Set the text for the marker
