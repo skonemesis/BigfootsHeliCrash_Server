@@ -18,25 +18,6 @@ _marker = createMarker [_markerId, _markerPosition];
 
 // Set the marker properties
 _marker setMarkerShape "ICON";
-_marker setMarkerType "c_air";  		// Type of marker (e.g., air)
-_marker setMarkerColor "ColorGreen";  	// Marker color (could also be "ColorOrange", "ColorRed", etc.)
-_marker setMarkerText _markerText;  	// Set the text for the marker
-
-
-/*
- * This file is subject to the terms and conditions defined in
- * file 'APL-SA LICENSE.txt', which is part of this source code package.
- *
- 
-private ["_marker", "_markerId", "_markerPosition", "_markerText"];
-
-_markerId = _this select 0;
-_markerPosition = _this select 1;
-_markerText = _this select 2;
-
-_marker = createMarker [_markerId, _markerPosition];
-_marker setMarkerShape "ICON";
-_marker setMarkerType "c_air";         // original  "mil_box";
-_marker setMarkerColor "ColorGreen";  // original "ColorGreen";
-_marker setMarkerText _markerText;
-*/
+_marker setMarkerType "c_air";        // Type of marker (e.g., air)
+_marker setMarkerColor "ColorGreen";  // Marker color (could also be "ColorOrange", "ColorRed", etc.)
+_marker setMarkerText _markerText;  	 // Set the text for the marker
