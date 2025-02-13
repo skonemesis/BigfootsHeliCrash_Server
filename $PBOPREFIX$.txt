@@ -1,0 +1,4 @@
+//<'BigfootsHeliCrashes_Server.pbo' properties via Mikero's dos tools, dll version 9.89>
+prefix=BigfootsHeliCrash_Server;
+//PboType=Arma Addon;
+//</properties>
