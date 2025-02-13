@@ -43,7 +43,7 @@ BH_class_wreckage =
     "Land_Wreck_Heli_Transport_02_F"
 ];
 
-BH_count_helicrash = 3; // Number of helicopter crash sites
+BH_count_HeliCrash = 3; // Number of helicopter crash sites
 BH_locations_crateWreckOffset = 10; 												// Keeps crates spawning close to the wreck.
 BH_locations_center = [6750, 6750, 0]; 												// Approximate center of Chernarus Redux, adjusted for best shore-based spawns.
 BH_locations_distance_min = 500; 													// Ensures some wrecks are **close to shore**.
