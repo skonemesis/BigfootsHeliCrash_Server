@@ -9,21 +9,21 @@ if (!isServer) exitWith {};
 
 // Spawns shipwrecks with loot crates at server start
 [
-    BH_count_HeliCrash, // Wreck count
+    BH_count_HeliCrash,             // Wreck count
     [ // Positioning (center, min, max)
         BH_locations_center,
         BH_locations_distance_min,
         BH_locations_distance_max
     ], 
-    BH_class_wreckage, // Wreckage class
-    BH_class_crate, // Crate class
-    BH_loot_itemCargo, // Crate cargo
-    BH_loot_count_poptabs_seed, // Crate poptabs seed (generated random poptab amount)
-    BH_debug_logCrateFill // Enable logging of items added to crate (true/false)
+    BH_class_wreckage,             // Wreckage class
+    BH_class_crate,                // Crate class
+    BH_loot_itemCargo,             // Crate cargo
+    BH_loot_count_poptabs_seed,    // Crate poptabs seed (generated random poptab amount)
+    BH_debug_logCrateFill          // Enable logging of items added to crate (true/false)
 ] call ExileServer_BigfootsHeliCrash_spawnHeliCrashCommand;
 
 // Handles marker cleanup and player detection
-uiSleep 15; // TODO: is this needed?
+uiSleep 5;                         // TODO: 15 is this needed?
 [
     10, 
     ExileServer_BigfootsHeliCrash_maintainHeliCrashCommand, 
