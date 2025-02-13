@@ -21,11 +21,12 @@ for "_i" from 1 to BH_count_HeliCrash do
 {
     // Get marker ID associated with the current wreck index
     _markerId = _i call ExileServer_BigfootsHeliCrash_getWreckIdForSpawnCountIndexQuery;
-    _markerPosition = getMarkerPos _markerId;
 
-    // Ensure the marker position is valid before proceeding
-    if (!isNil "_markerPosition") then 
+    // Ensure the marker exists before attempting to get its position
+    if (markerExists _markerId) then 
     {
+        _markerPosition = getMarkerPos _markerId;
+
         // Check if any player is within the specified radius of the wreck
         _isPlayerInRange = [_markerPosition, _crateClaimMessageRadius] call ExileClient_util_world_isAlivePlayerInRange;
 
